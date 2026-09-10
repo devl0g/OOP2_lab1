@@ -14,9 +14,9 @@ public:
   ~NumberScrollPopup() noexcept;
 
 private:
-  QVBoxLayout layout;
-  QScrollBar scrollBar;
-  QLabel valueLabel;
+  QVBoxLayout layout {};
+  QScrollBar scrollBar {};
+  QLabel valueLabel {};
 
 signals:
   void numberChoosed(int number);

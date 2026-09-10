@@ -13,8 +13,8 @@ public:
   ~TextEnterPopup() noexcept;
 
 private:
-  QVBoxLayout layout;
-  QLineEdit lineEdit;
+  QVBoxLayout layout {};
+  QLineEdit lineEdit {};
 
 signals:
   void textEntered(QString string);

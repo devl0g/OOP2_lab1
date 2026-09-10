@@ -6,8 +6,10 @@
 #include <QApplication>
 #include <QWidget>
 
-MainWindow::MainWindow(QWidget* parent) noexcept
-  : QMainWindow(parent)
+MainWindow::MainWindow(QWidget* parent) noexcept : 
+  firstLabel(this),
+  secondLabel(this),
+  QMainWindow(parent)
 {
   setWindowTitle(tr("Lab No.1"));
   implementMenuBar();
@@ -15,10 +17,7 @@ MainWindow::MainWindow(QWidget* parent) noexcept
   auto *centralContainer = new QWidget(this);
   setCentralWidget(centralContainer);
 
-  firstLabel.setText(tr(""));
   firstLabel.setAlignment(Qt::AlignCenter);
-
-  secondLabel.setText(tr(""));
   secondLabel.setAlignment(Qt::AlignCenter);
 
   auto layout = new QVBoxLayout(centralContainer);

@@ -5,20 +5,20 @@
 #include <QtWidgets/QBoxLayout>
 #include <string>
 
-NumberScrollPopup::NumberScrollPopup(QWidget* parent) noexcept
-  : QDialog(parent)
+NumberScrollPopup::NumberScrollPopup(QWidget* parent) noexcept :
+  scrollBar(Qt::Horizontal, this),
+  valueLabel(tr("1"), this),
+  layout(this),
+  QDialog(parent)
 {
   setWindowTitle(tr("Popup"));
   setModal(true);
   setFixedSize(300, 100);
 
-  scrollBar.setOrientation(Qt::Horizontal);
   scrollBar.setFixedHeight(20);
   scrollBar.setMinimum(1);
   scrollBar.setMaximum(100);
   scrollBar.setValue(1);
-
-  valueLabel.setText(tr("1"));
 
   auto row = new QHBoxLayout(nullptr);
   row->addWidget(&scrollBar, 1);

@@ -14,8 +14,8 @@ public:
   ~MainWindow() noexcept;
 
 private:
-  QLabel firstLabel;
-  QLabel secondLabel;
+  QLabel firstLabel {};
+  QLabel secondLabel {};
 
   void implementMenuBar() noexcept;
 

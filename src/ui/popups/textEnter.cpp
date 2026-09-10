@@ -5,8 +5,10 @@
 #include <QtWidgets/QBoxLayout>
 #include <QtWidgets/QLineEdit>
 
-TextEnterPopup::TextEnterPopup(QWidget* parent) noexcept
-  : QDialog(parent)
+TextEnterPopup::TextEnterPopup(QWidget* parent) noexcept : 
+  layout(this),
+  lineEdit(this),
+  QDialog(parent)
 {
   setWindowTitle(tr("Popup"));
   setModal(true);
