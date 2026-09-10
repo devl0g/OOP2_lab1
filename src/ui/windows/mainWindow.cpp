@@ -27,6 +27,10 @@ MainWindow::MainWindow(QWidget* parent) noexcept
   layout->addWidget(&secondLabel);
 }
 
+MainWindow::~MainWindow() noexcept {
+  Logger::info("window closed");
+}
+
 void MainWindow::implementMenuBar() noexcept {
   auto workMenuSection = menuBar()->addMenu(tr("&Робота"));
 

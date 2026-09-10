@@ -11,6 +11,7 @@ class MainWindow : public QMainWindow {
 
 public:
   explicit MainWindow(QWidget* parent = nullptr) noexcept;
+  ~MainWindow() noexcept;
 
 private:
   QLabel firstLabel;
