@@ -16,7 +16,10 @@ MainWindow::MainWindow(QWidget* parent) noexcept
   setCentralWidget(centralContainer);
 
   firstLabel.setText(tr(""));
+  firstLabel.setAlignment(Qt::AlignCenter);
+
   secondLabel.setText(tr(""));
+  secondLabel.setAlignment(Qt::AlignCenter);
 
   auto layout = new QVBoxLayout(centralContainer);
   layout->setAlignment(Qt::AlignCenter);
