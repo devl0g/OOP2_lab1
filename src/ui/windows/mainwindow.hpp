@@ -1,5 +1,5 @@
-#ifndef INCLUDE_UI_MAINWINDOW_HPP_
-#define INCLUDE_UI_MAINWINDOW_HPP_
+#ifndef INCLUDE_UI_WINDOWS_MAINWINDOW_HPP_
+#define INCLUDE_UI_WINDOWS_MAINWINDOW_HPP_
 
 #include <QWidget>
 #include <QtWidgets/QMenuBar>
@@ -16,6 +16,7 @@ private:
 
 signals:
 private slots:
+  void openTextEnterDialog();
   void exit();
 };
 
