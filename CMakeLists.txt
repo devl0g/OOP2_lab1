@@ -17,7 +17,7 @@ qt_standard_project_setup()
 
 add_executable(Lab1
   ./src/main.cpp
-  ./src/ui/windows/mainwindow.cpp
+  ./src/ui/windows/mainWindow.cpp
   ./src/ui/popups/textEnter.cpp
 )
 

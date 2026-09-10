@@ -1,4 +1,4 @@
-#include "mainwindow.hpp"
+#include "mainWindow.hpp"
 #include "../popups/textEnter.hpp"
 #include "../../utils/logger.hpp"
 #include <QtWidgets/QMenu>
