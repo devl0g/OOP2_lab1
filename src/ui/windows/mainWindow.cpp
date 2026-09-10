@@ -1,5 +1,6 @@
 #include "mainWindow.hpp"
 #include "../popups/textEnter.hpp"
+#include "../popups/numberScroll.hpp"
 #include "../../utils/logger.hpp"
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QBoxLayout>
@@ -11,11 +12,11 @@ MainWindow::MainWindow(QWidget* parent) noexcept
   setWindowTitle(tr("Lab No.1"));
   implementMenuBar();
 
-  firstLabel.setText(tr(""));
-  secondLabel.setText(tr(""));
-
   auto *centralContainer = new QWidget(this);
   setCentralWidget(centralContainer);
+
+  firstLabel.setText(tr(""));
+  secondLabel.setText(tr(""));
 
   auto layout = new QVBoxLayout(centralContainer);
   layout->setAlignment(Qt::AlignCenter);
@@ -31,6 +32,7 @@ void MainWindow::implementMenuBar() noexcept {
   auto exitAction = workMenuSection->addAction(tr("&Вийти"));
 
   QObject::connect(work1Action, SIGNAL(triggered(bool)), this, SLOT(openTextEnterDialog()));
+  QObject::connect(work2Action, SIGNAL(triggered(bool)), this, SLOT(openNumberScrollDialog()));
   QObject::connect(exitAction, SIGNAL(triggered(bool)), this, SLOT(exit()));
 }
 
@@ -43,8 +45,21 @@ void MainWindow::openTextEnterDialog() {
   popup.exec(); // Blocks execution, so TextEnterPopup doesn't disallocate too early
 }
 
+void MainWindow::openNumberScrollDialog() {
+  NumberScrollPopup popup(this);
+
+  QObject::connect(&popup, &NumberScrollPopup::numberChoosed, this, &MainWindow::updateSecondLabel);
+
+  Logger::info("popup opening");
+  popup.exec(); // Blocks execution, so TextEnterPopup doesn't disallocate too early
+}
+
 void MainWindow::updateFirstLabel(QString text) {
   this->firstLabel.setText(text);
+}
+
+void MainWindow::updateSecondLabel(int value) {
+  this->secondLabel.setText(tr(std::to_string(value).c_str()));
 }
 
 void MainWindow::exit() {

@@ -21,8 +21,10 @@ private:
 signals:
 private slots:
   void updateFirstLabel(QString text);
+  void updateSecondLabel(int value);
 
   void openTextEnterDialog();
+  void openNumberScrollDialog();
   void exit();
 };
 

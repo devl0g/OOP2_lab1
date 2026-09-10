@@ -19,6 +19,7 @@ add_executable(Lab1
   ./src/main.cpp
   ./src/ui/windows/mainWindow.cpp
   ./src/ui/popups/textEnter.cpp
+  ./src/ui/popups/numberScroll.cpp
 )
 
 target_link_libraries(Lab1 PRIVATE Qt6::Widgets)
