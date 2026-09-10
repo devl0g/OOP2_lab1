@@ -40,7 +40,7 @@ NumberScrollPopup::NumberScrollPopup(QWidget* parent) noexcept
 }
 
 NumberScrollPopup::~NumberScrollPopup() noexcept {
-  Logger::info("popup closed");
+  Logger::info("popup number scroll closed");
 }
 
 void NumberScrollPopup::scrolled(int value) {

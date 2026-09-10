@@ -41,7 +41,7 @@ void MainWindow::openTextEnterDialog() {
 
   QObject::connect(&popup, &TextEnterPopup::textEntered, this, &MainWindow::updateFirstLabel);
 
-  Logger::info("popup opening");
+  Logger::info("popup text enter opening");
   popup.exec(); // Blocks execution, so TextEnterPopup doesn't disallocate too early
 }
 
@@ -50,7 +50,7 @@ void MainWindow::openNumberScrollDialog() {
 
   QObject::connect(&popup, &NumberScrollPopup::numberChoosed, this, &MainWindow::updateSecondLabel);
 
-  Logger::info("popup opening");
+  Logger::info("popup number scroll opening");
   popup.exec(); // Blocks execution, so TextEnterPopup doesn't disallocate too early
 }
 

@@ -27,7 +27,7 @@ TextEnterPopup::TextEnterPopup(QWidget* parent) noexcept
 }
 
 TextEnterPopup::~TextEnterPopup() noexcept {
-  Logger::info("popup closed");
+  Logger::info("popup text enter closed");
 }
 
 void TextEnterPopup::submit() {
