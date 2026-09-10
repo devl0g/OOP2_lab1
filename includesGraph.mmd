@@ -1,0 +1,81 @@
+flowchart LR
+    %% Application source files
+    Cmain["main.cpp"]
+    CmainWindow["ui/windows/mainWindow.cpp"]
+    CtextEnter["ui/popups/textEnter.cpp"]
+    CnumberScroll["ui/popups/numberScroll.cpp"]
+
+    %% Project headers
+    mainWindow["ui/windows/mainWindow.hpp"]
+    textEnter["ui/popups/textEnter.hpp"]
+    numberScroll["ui/popups/numberScroll.hpp"]
+    logger["utils/logger.hpp"]
+
+    %% Qt dependencies
+    QApplication["QApplication"]
+    QWidget["QWidget"]
+    QMainWindow["QMainWindow"]
+    QDialog["QDialog"]
+    QMenuBar["QtWidgets/QMenuBar"]
+    QLabel["QtWidgets/QLabel"]
+    QBoxLayout["QtWidgets/QBoxLayout"]
+    QLineEdit["QtWidgets/QLineEdit"]
+    QDialogButtonBox["QtWidgets/QDialogButtonBox"]
+    QScrollBar["QtWidgets/QScrollBar"]
+
+    %% C++ standard library
+    iostream["iostream"]
+    stringView["string_view"]
+    string["string"]
+
+    Cmain --> mainWindow
+    Cmain --> logger
+    Cmain --> QApplication
+
+    CmainWindow --> mainWindow
+    CmainWindow --> textEnter
+    CmainWindow --> numberScroll
+    CmainWindow --> logger
+    CmainWindow --> QApplication
+    CmainWindow --> QWidget
+    CmainWindow --> QBoxLayout
+
+    CtextEnter --> textEnter
+    CtextEnter --> logger
+    CtextEnter --> QDialog
+    CtextEnter --> QBoxLayout
+    CtextEnter --> QLineEdit
+    CtextEnter --> QDialogButtonBox
+
+    CnumberScroll --> numberScroll
+    CnumberScroll --> logger
+    CnumberScroll --> QDialog
+    CnumberScroll --> QBoxLayout
+    CnumberScroll --> QLabel
+    CnumberScroll --> QDialogButtonBox
+    CnumberScroll --> string
+
+    mainWindow --> QWidget
+    mainWindow --> QMainWindow
+    mainWindow --> QMenuBar
+    mainWindow --> QLabel
+
+    textEnter --> QDialog
+    textEnter --> QBoxLayout
+    textEnter --> QLineEdit
+
+    numberScroll --> QDialog
+    numberScroll --> QBoxLayout
+    numberScroll --> QScrollBar
+    numberScroll --> QLabel
+
+    logger --> iostream
+    logger --> stringView
+
+    classDef sourceFile stroke:#f87171,fill:#fef2f2
+    classDef headerFile stroke:#38bdf8,fill:#f0f9ff
+    classDef lib stroke:#4ade80,fill:#f0fdf4
+
+    class Cmain,CmainWindow,CtextEnter,CnumberScroll sourceFile
+    class logger,mainWindow,textEnter,numberScroll headerFile
+    class QApplication,QWidget,QMainWindow,QDialog,QMenuBar,QLabel,QBoxLayout,QLineEdit,QDialogButtonBox,QScrollBar,iostream,stringView,string lib
