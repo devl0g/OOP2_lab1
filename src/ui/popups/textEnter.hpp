@@ -3,7 +3,7 @@
 
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QBoxLayout>
-#include <qobject.h>
+#include <QtWidgets/QLineEdit>
 
 class TextEnterPopup : public QDialog {
   Q_OBJECT
@@ -14,11 +14,14 @@ public:
 
 private:
   QVBoxLayout layout;
+  QLineEdit lineEdit;
 
 signals:
   void textEntered(QString string);
 
 private slots:
+  void submit();
+  void cancel();
 };
 
 #endif // INCLUDE_UI_POPUPS_TEXT_ENTER_HPP_

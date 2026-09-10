@@ -4,6 +4,7 @@
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QBoxLayout>
 #include <QtWidgets/QLineEdit>
+#include <format>
 
 TextEnterPopup::TextEnterPopup(QWidget* parent) noexcept
   : QDialog(parent)
@@ -12,18 +13,29 @@ TextEnterPopup::TextEnterPopup(QWidget* parent) noexcept
   setModal(true);
   setFixedSize(300, 100);
 
-  auto lineEdit = new QLineEdit(this);
-
   auto buttonBox = new QDialogButtonBox(
-    QDialogButtonBox::StandardButton::Ok | QDialogButtonBox::StandardButton::Discard, 
+    QDialogButtonBox::StandardButton::Ok | QDialogButtonBox::StandardButton::Cancel, 
     this
   );
 
-  layout.addWidget(lineEdit);
+  layout.addWidget(&lineEdit);
   layout.addWidget(buttonBox);
   setLayout(&layout);
+
+  QObject::connect(buttonBox, &QDialogButtonBox::accepted, this, &TextEnterPopup::submit);
+  QObject::connect(buttonBox, &QDialogButtonBox::rejected, this, &TextEnterPopup::cancel);
 }
 
 TextEnterPopup::~TextEnterPopup() noexcept {
   Logger::info("popup closed");
+}
+
+void TextEnterPopup::submit() {
+  Logger::debug(std::format("Entered: {}", lineEdit.text().toStdString()));
+  emit this->textEntered(lineEdit.text());
+  close();
+}
+
+void TextEnterPopup::cancel() {
+  close();
 }
