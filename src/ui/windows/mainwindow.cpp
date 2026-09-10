@@ -1,16 +1,26 @@
 #include "mainwindow.hpp"
 #include "../popups/textEnter.hpp"
 #include "../../utils/logger.hpp"
-#include <qwidget.h>
 #include <QtWidgets/QMenu>
+#include <QtWidgets/QBoxLayout>
 #include <QApplication>
 
 MainWindow::MainWindow(QWidget* parent) noexcept
   : QMainWindow(parent)
 {
   setWindowTitle(tr("Lab No.1"));
-
   implementMenuBar();
+
+  firstLabel.setText(tr(""));
+  secondLabel.setText(tr(""));
+
+  auto *centralContainer = new QWidget(this);
+  setCentralWidget(centralContainer);
+
+  auto layout = new QVBoxLayout(centralContainer);
+  layout->setAlignment(Qt::AlignCenter);
+  layout->addWidget(&firstLabel);
+  layout->addWidget(&secondLabel);
 }
 
 void MainWindow::implementMenuBar() noexcept {
@@ -26,8 +36,15 @@ void MainWindow::implementMenuBar() noexcept {
 
 void MainWindow::openTextEnterDialog() {
   TextEnterPopup popup(this);
+
+  QObject::connect(&popup, &TextEnterPopup::textEntered, this, &MainWindow::updateFirstLabel);
+
   Logger::info("popup opening");
   popup.exec(); // Blocks execution, so TextEnterPopup doesn't disallocate too early
+}
+
+void MainWindow::updateFirstLabel(QString text) {
+  this->firstLabel.setText(text);
 }
 
 void MainWindow::exit() {
