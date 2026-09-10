@@ -2,9 +2,9 @@
 #include "../popups/textEnter.hpp"
 #include "../popups/numberScroll.hpp"
 #include "../../utils/logger.hpp"
-#include <QtWidgets/QMenu>
 #include <QtWidgets/QBoxLayout>
 #include <QApplication>
+#include <QWidget>
 
 MainWindow::MainWindow(QWidget* parent) noexcept
   : QMainWindow(parent)

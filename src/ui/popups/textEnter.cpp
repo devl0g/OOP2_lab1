@@ -4,7 +4,6 @@
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QBoxLayout>
 #include <QtWidgets/QLineEdit>
-#include <format>
 
 TextEnterPopup::TextEnterPopup(QWidget* parent) noexcept
   : QDialog(parent)

@@ -3,7 +3,6 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QBoxLayout>
-#include <QtWidgets/QLineEdit>
 #include <string>
 
 NumberScrollPopup::NumberScrollPopup(QWidget* parent) noexcept
