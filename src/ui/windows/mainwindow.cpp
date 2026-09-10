@@ -1,5 +1,5 @@
 #include "mainwindow.hpp"
-#include "../utils/logger.hpp"
+#include "../../utils/logger.hpp"
 #include <qwidget.h>
 #include <QtWidgets/QMenu>
 #include <QApplication>

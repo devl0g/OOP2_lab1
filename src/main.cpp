@@ -1,5 +1,5 @@
 #include "utils/logger.hpp"
-#include "ui/mainwindow.hpp"
+#include "ui/windows/mainwindow.hpp"
 #include <QApplication>
 
 int main(int argc, char** argv) {
