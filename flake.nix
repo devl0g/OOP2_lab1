@@ -16,14 +16,17 @@
           pkgs = import nixpkgs { inherit system; };
         in
         {
-          default = pkgs.mkShell {
+          default = pkgs.mkShell.override { stdenv = pkgs.clangStdenv; } {
             nativeBuildInputs = with pkgs; [
               git
-              clang
+              clang-tools
               pkg-config
               ninja
               gnumake
               cmake
+
+              # LSPs
+              neocmakelsp
             ];
 
             buildInputs = with pkgs; [
