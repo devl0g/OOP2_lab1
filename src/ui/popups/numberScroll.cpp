@@ -11,6 +11,16 @@ NumberScrollPopup::NumberScrollPopup(QWidget* parent) noexcept :
   layout(this),
   QDialog(parent)
 {
+  initUI();
+}
+
+NumberScrollPopup::~NumberScrollPopup() noexcept {
+  Logger::info("popup number scroll closed");
+}
+
+// UI
+
+void NumberScrollPopup::initUI() noexcept {
   setWindowTitle(tr("Popup"));
   setModal(true);
   setFixedSize(300, 100);
@@ -38,9 +48,7 @@ NumberScrollPopup::NumberScrollPopup(QWidget* parent) noexcept :
   QObject::connect(buttonBox, &QDialogButtonBox::rejected, this, &NumberScrollPopup::cancel);
 }
 
-NumberScrollPopup::~NumberScrollPopup() noexcept {
-  Logger::info("popup number scroll closed");
-}
+// Slots
 
 void NumberScrollPopup::scrolled(int value) {
   valueLabel.setText(tr(std::to_string(value).c_str()));

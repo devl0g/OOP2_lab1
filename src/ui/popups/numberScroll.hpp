@@ -14,6 +14,8 @@ public:
   ~NumberScrollPopup() noexcept;
 
 private:
+  void initUI() noexcept;
+
   QVBoxLayout layout {};
   QScrollBar scrollBar {};
   QLabel valueLabel {};

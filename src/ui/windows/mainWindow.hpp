@@ -17,6 +17,7 @@ private:
   QLabel firstLabel {};
   QLabel secondLabel {};
 
+  void initUI() noexcept;
   void implementMenuBar() noexcept;
 
 signals:

@@ -13,6 +13,8 @@ public:
   ~TextEnterPopup() noexcept;
 
 private:
+  void initUI() noexcept;
+
   QVBoxLayout layout {};
   QLineEdit lineEdit {};
 

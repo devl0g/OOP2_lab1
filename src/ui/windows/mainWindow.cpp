@@ -11,6 +11,16 @@ MainWindow::MainWindow(QWidget* parent) noexcept :
   secondLabel(this),
   QMainWindow(parent)
 {
+  initUI();
+}
+
+MainWindow::~MainWindow() noexcept {
+  Logger::info("window closed");
+}
+
+// UI
+
+void MainWindow::initUI() noexcept {
   setWindowTitle(tr("Lab No.1"));
   implementMenuBar();
 
@@ -24,10 +34,6 @@ MainWindow::MainWindow(QWidget* parent) noexcept :
   layout->setAlignment(Qt::AlignCenter);
   layout->addWidget(&firstLabel);
   layout->addWidget(&secondLabel);
-}
-
-MainWindow::~MainWindow() noexcept {
-  Logger::info("window closed");
 }
 
 void MainWindow::implementMenuBar() noexcept {
@@ -50,6 +56,8 @@ void MainWindow::openTextEnterDialog() {
   Logger::info("popup text enter opening");
   popup.exec(); // Blocks execution, so TextEnterPopup doesn't disallocate too early
 }
+
+// Slots
 
 void MainWindow::openNumberScrollDialog() {
   NumberScrollPopup popup(this);

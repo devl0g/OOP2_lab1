@@ -10,6 +10,16 @@ TextEnterPopup::TextEnterPopup(QWidget* parent) noexcept :
   lineEdit(this),
   QDialog(parent)
 {
+  initUI();
+}
+
+TextEnterPopup::~TextEnterPopup() noexcept {
+  Logger::info("popup text enter closed");
+}
+
+// UI
+
+void TextEnterPopup::initUI() noexcept {
   setWindowTitle(tr("Popup"));
   setModal(true);
   setFixedSize(300, 100);
@@ -27,9 +37,7 @@ TextEnterPopup::TextEnterPopup(QWidget* parent) noexcept :
   QObject::connect(buttonBox, &QDialogButtonBox::rejected, this, &TextEnterPopup::cancel);
 }
 
-TextEnterPopup::~TextEnterPopup() noexcept {
-  Logger::info("popup text enter closed");
-}
+// Slots
 
 void TextEnterPopup::submit() {
   Logger::debug(std::format("Entered: {}", lineEdit.text().toStdString()));
